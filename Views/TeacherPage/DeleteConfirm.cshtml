@@ -1,0 +1,22 @@
+﻿@model Cummulative1.Models.Teacher
+
+@{
+    ViewData["Title"] = "Confirm Delete";
+}
+
+<h1>Confirm Delete</h1>
+
+<p>Are you sure you want to delete the following teacher?</p>
+
+<div>
+    <p><strong>Name:</strong> @Model.TeacherFName @Model.TeacherLName</p>
+    <p><strong>Employee Number:</strong> @Model.EmployeeNumber</p>
+    <p><strong>Hire Date:</strong> @Model.HireDate.ToShortDateString()</p>
+    <p><strong>Salary:</strong> @Model.Salary.ToString("C")</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="TeacherId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="List" class="btn btn-secondary">Cancel</a>
+</form>

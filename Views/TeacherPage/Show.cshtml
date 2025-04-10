@@ -1,0 +1,16 @@
+﻿@model Cummulative1.Models.Teacher
+
+@{
+    ViewData["Title"] = "Teacher Details";
+}
+
+<h1>Teacher Details</h1>
+
+<div>
+    <h3>@Model.TeacherFName @Model.TeacherLName</h3>
+    <p><strong>Employee Number:</strong> @Model.EmployeeNumber</p>
+    <p><strong>Hire Date:</strong> @Model.HireDate.ToShortDateString()</p>
+    <p><strong>Salary:</strong> @Model.Salary.ToString("C")</p>
+</div>
+
+<a asp-action="List" class="btn btn-secondary">Back to List</a>
