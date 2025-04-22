@@ -143,6 +143,65 @@ namespace Cummulative1.Controllers
             }
         }
 
+        /// <summary>
+        /// Updates an existing teacher in the database.
+        /// </summary>
+        /// <param name="id">The ID of the teacher to update.</param>
+        /// <param name="updatedTeacher">The updated teacher object.</param>
+        /// <returns>An HTTP response indicating success or failure.</returns>
+        [HttpPut]
+        [Route("UpdateTeacher/{id}")]
+        public IActionResult UpdateTeacher(int id, [FromBody] Teacher updatedTeacher)
+        {
+            if (id != updatedTeacher.TeacherId)
+            {
+                return BadRequest("Teacher ID mismatch.");
+            }
+
+            if (string.IsNullOrWhiteSpace(updatedTeacher.TeacherFName) || string.IsNullOrWhiteSpace(updatedTeacher.TeacherLName))
+            {
+                return BadRequest("Teacher name cannot be empty.");
+            }
+
+            if (updatedTeacher.HireDate > DateTime.Now)
+            {
+                return BadRequest("Hire date cannot be in the future.");
+            }
+
+            if (updatedTeacher.Salary < 0)
+            {
+                return BadRequest("Salary cannot be less than 0.");
+            }
+
+            using (MySqlConnection connection = _context.AccessDatabase())
+            {
+                connection.Open();
+                MySqlCommand command = connection.CreateCommand();
+                command.CommandText = @"
+            UPDATE teachers
+            SET teacherfname = @TeacherFName,
+                teacherlname = @TeacherLName,
+                employeenumber = @EmployeeNumber,
+                hiredate = @HireDate,
+                salary = @Salary
+            WHERE teacherid = @TeacherId";
+
+                command.Parameters.AddWithValue("@TeacherFName", updatedTeacher.TeacherFName);
+                command.Parameters.AddWithValue("@TeacherLName", updatedTeacher.TeacherLName);
+                command.Parameters.AddWithValue("@EmployeeNumber", updatedTeacher.EmployeeNumber);
+                command.Parameters.AddWithValue("@HireDate", updatedTeacher.HireDate);
+                command.Parameters.AddWithValue("@Salary", updatedTeacher.Salary);
+                command.Parameters.AddWithValue("@TeacherId", updatedTeacher.TeacherId);
+
+                int rowsAffected = command.ExecuteNonQuery();
+                if (rowsAffected == 0)
+                {
+                    return NotFound("Teacher not found.");
+                }
+            }
+
+            return Ok("Teacher updated successfully.");
+        }
 
     }
 }

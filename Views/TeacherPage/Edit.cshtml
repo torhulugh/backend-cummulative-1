@@ -1,0 +1,77 @@
+﻿@model Cummulative1.Models.Teacher
+
+@{
+    ViewData["Title"] = "Edit Teacher";
+}
+
+<h1>Edit Teacher</h1>
+
+<form asp-action="Update" asp-route-id="@Model.TeacherId" method="post">
+    <div class="form-group">
+        <label asp-for="TeacherFName"></label>
+        <input asp-for="TeacherFName" class="form-control" />
+        <span asp-validation-for="TeacherFName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TeacherLName"></label>
+        <input asp-for="TeacherLName" class="form-control" />
+        <span asp-validation-for="TeacherLName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EmployeeNumber"></label>
+        <input asp-for="EmployeeNumber" class="form-control" />
+        <span asp-validation-for="EmployeeNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HireDate"></label>
+        <input asp-for="HireDate" type="date" class="form-control" />
+        <span asp-validation-for="HireDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Salary"></label>
+        <input asp-for="Salary" type="number" step="0.01" class="form-control" />
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="List" class="btn btn-secondary">Cancel</a>
+</form>
+
+<style>
+    h1 {
+        text-align: center;
+        color: #4CAF50;
+        margin-bottom: 20px;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn {
+        width: 48%;
+    }
+
+    .text-danger {
+        font-size: 0.9em;
+    }
+</style>

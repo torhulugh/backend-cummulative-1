@@ -60,3 +60,4 @@ C:\Users\Tor Hulugh\source\repos\Cummulative1\Cummulative1\obj\Debug\net8.0\refi
 C:\Users\Tor Hulugh\source\repos\Cummulative1\Cummulative1\obj\Debug\net8.0\Cummulative1.pdb
 C:\Users\Tor Hulugh\source\repos\Cummulative1\Cummulative1\obj\Debug\net8.0\Cummulative1.genruntimeconfig.cache
 C:\Users\Tor Hulugh\source\repos\Cummulative1\Cummulative1\obj\Debug\net8.0\ref\Cummulative1.dll
+C:\Users\Tor Hulugh\source\repos\Cummulative1\Cummulative1\obj\Debug\net8.0\Cummulative1.sourcelink.json

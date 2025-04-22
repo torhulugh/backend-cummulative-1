@@ -103,5 +103,60 @@ namespace Cummulative1.Controllers
             }
             return RedirectToAction("List");
         }
+
+        /// <summary>
+        /// Displays a form to edit an existing teacher.
+        /// </summary>
+        /// <param name="id">The ID of the teacher to edit.</param>
+        /// <returns>A view with the form to edit the teacher.</returns>
+        [HttpGet]
+        [Route("[controller]/Edit/{id}")]
+        public IActionResult Edit(int id)
+        {
+            Teacher teacher = _api.FindTeacher(id);
+            if (teacher == null)
+            {
+                return NotFound("Teacher not found.");
+            }
+            return View(teacher);
+        }
+
+
+        /// <summary>
+        /// Handles the submission of the edit teacher form.
+        /// </summary>
+        /// <param name="id">The ID of the teacher to update.</param>
+        /// <param name="updatedTeacher">The updated teacher object.</param>
+        /// <returns>Redirects to the teacher details page or displays validation errors.</returns>
+        [HttpPost]
+        [Route("[controller]/Update/{id}")]
+        public IActionResult Update(int id, Teacher updatedTeacher)
+        {
+            if (id != updatedTeacher.TeacherId)
+            {
+                ModelState.AddModelError(string.Empty, "Teacher ID mismatch.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                IActionResult result = _api.UpdateTeacher(id, updatedTeacher);
+                if (result is OkObjectResult)
+                {
+                    return RedirectToAction("Show", new { id = id });
+                }
+                else if (result is BadRequestObjectResult badRequest)
+                {
+                    ModelState.AddModelError(string.Empty, badRequest.Value.ToString());
+                }
+                else if (result is NotFoundObjectResult notFound)
+                {
+                    ModelState.AddModelError(string.Empty, notFound.Value.ToString());
+                }
+            }
+
+            return View("Edit", updatedTeacher);
+        }
+
+
     }
 }

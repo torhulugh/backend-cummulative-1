@@ -98,6 +98,27 @@
     ]
   },
   {
+    "ContainingType": "Cummulative1.Controllers.TeacherAPIController",
+    "Method": "UpdateTeacher",
+    "RelativePath": "api/Teacher/UpdateTeacher/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedTeacher",
+        "Type": "Cummulative1.Models.Teacher",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Cummulative1.Controllers.TeacherPageController",
     "Method": "Create",
     "RelativePath": "TeacherPage/Create",
@@ -172,6 +193,22 @@
   },
   {
     "ContainingType": "Cummulative1.Controllers.TeacherPageController",
+    "Method": "Edit",
+    "RelativePath": "TeacherPage/Edit/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Cummulative1.Controllers.TeacherPageController",
     "Method": "List",
     "RelativePath": "TeacherPage/List",
     "HttpMethod": "GET",
@@ -202,6 +239,52 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Cummulative1.Controllers.TeacherPageController",
+    "Method": "Update",
+    "RelativePath": "TeacherPage/Update/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "TeacherId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "TeacherFName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TeacherLName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "EmployeeNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "HireDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "Salary",
+        "Type": "System.Decimal",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
